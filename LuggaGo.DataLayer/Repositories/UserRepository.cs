@@ -1,11 +1,7 @@
-﻿using LuggaGo.DataLayer.Models.Interfaces;
+﻿using LuggaGo.DataLayer.Models;
+using LuggaGo.DataLayer.Models.Interfaces;
 using LuggaGo.DataLayer.Models.Repositories;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LuggaGo.DataLayer.Models;
 
 namespace LuggaGo.DataLayer.Repositories
 {

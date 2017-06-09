@@ -233,8 +233,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BindingModels\RegisterUserBindingModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -315,6 +317,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuggaGo.BusinessLayer\LuggaGo.BusinessLayer.csproj">
+      <Project>{E5F578EB-0B02-4409-8045-44AE16D59B65}</Project>
+      <Name>LuggaGo.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LuggaGo.DataLayer\LuggaGo.DataLayer.csproj">
+      <Project>{D586F5ED-7B61-4665-8A7A-446578788E8C}</Project>
+      <Name>LuggaGo.DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
