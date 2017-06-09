@@ -1,64 +1,62 @@
 ﻿using LuggaGo.BusinessLayer;
 using LuggaGo.DataLayer.Models;
-using LuggaGo.DataLayer.Repositories;
-using System.Collections.Generic;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
-using System.Web.Routing;
+using LuggaGo.DataLayer.Repositories;
+using System.Collections.Generic;
 
 namespace LuggaGo.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Address")]
-    public class AddressController : ApiController
+    [RoutePrefix("api/Payment")]
+    public class PaymentController : ApiController
     {
-        private AddressServices _addressServices;
+        private PaymentServices _paymentServices;
 
-        public AddressServices AddressServices
+        public PaymentServices PaymentServices
         {
             get
             {
-                return _addressServices ?? new AddressServices(
-                    new AddressRepository(), new UserRepository());
-
+                return _paymentServices ?? new PaymentServices(
+                    new UserRepository(), new PaymentRepository());
             }
-            private set { _addressServices = value; }
+            private set { _paymentServices = value; }
         }
 
         [HttpPost]
         [Route("Add")]
-        public IHttpActionResult Add(Address model)
+        public IHttpActionResult Add(CreditCard model)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             var accountId = User.Identity.GetUserId();
 
-            var success = AddressServices.AddAddress(model, accountId);
+            var success = PaymentServices.AddPayment(model,
+                accountId);
 
-            if(!success)
+            if (!success)
                 return BadRequest();
             return Ok();
         }
 
         [HttpGet]
         [Route("Get")]
-        public List<Address> Get()
+        public List<CreditCard> Get()
         {
             var accountId = User.Identity.GetUserId();
 
-            return AddressServices.GetAddresses(accountId);
+            return PaymentServices.Get(accountId);
         }
 
         [HttpPut]
-        //[Route("Edit")]
-        public IHttpActionResult Edit(int id, [FromBody]Address address)
+        public IHttpActionResult Edit(int id, [FromBody]CreditCard model)
         {
             var accountId = User.Identity.GetUserId();
-            address.ID = id;
-            var success = AddressServices.Edit(address, accountId);
+            model.Id = id;
+            var success = PaymentServices.Edit(model, accountId);
 
             if (!success)
                 return BadRequest();
@@ -69,7 +67,7 @@ namespace LuggaGo.Controllers
         public IHttpActionResult Delete(int id)
         {
             var accountId = User.Identity.GetUserId();
-            var success = AddressServices.Delete(id, accountId);
+            var success = PaymentServices.Delete(id, accountId);
 
             if (!success)
                 return BadRequest();

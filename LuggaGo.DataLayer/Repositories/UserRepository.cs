@@ -36,6 +36,24 @@ namespace LuggaGo.DataLayer.Repositories
             return query.Addresses;
         }
 
+        public CreditCard GetCreditCardById(int id, string accountId)
+        {
+            var query = GetAll()
+                .Include(x => x.CreditCards)
+                .FirstOrDefault(x => x.AccountId == accountId)
+                .CreditCards
+                .FirstOrDefault(y => y.Id == id);
+            return query;
+        }
+
+        public List<CreditCard> GetCreditCards(string accountId)
+        {
+            var query = GetAll()
+                .Include(x => x.CreditCards)
+                .FirstOrDefault(x => x.AccountId == accountId);
+            return query.CreditCards;
+        }
+
         public Address GetUserAddressById(int id, string accountId)
         {
             var query = GetAll()
