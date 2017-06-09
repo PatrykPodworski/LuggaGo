@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo", "LuggaGo\LuggaGo.csproj", "{6588D02B-E009-44C7-823C-E769A63DF17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo.Tests", "LuggaGo.Tests\LuggaGo.Tests.csproj", "{B09BC45B-1B73-4472-A5E2-97EFBB62735F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6588D02B-E009-44C7-823C-E769A63DF17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6588D02B-E009-44C7-823C-E769A63DF17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6588D02B-E009-44C7-823C-E769A63DF17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6588D02B-E009-44C7-823C-E769A63DF17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
