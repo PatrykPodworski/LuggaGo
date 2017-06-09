@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using LuggaGo.BindingModels;
+﻿using LuggaGo.BindingModels;
 using LuggaGo.BusinessLayer;
 using LuggaGo.DataLayer.Models;
 using LuggaGo.DataLayer.Repositories;
 using LuggaGo.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace LuggaGo.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -42,6 +43,7 @@ namespace LuggaGo.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterUserBindingModel model)
         {

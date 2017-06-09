@@ -18,6 +18,7 @@ namespace LuggaGo.BusinessLayer
         {
             var user = new User(firstName, lastName, accountId);
             _userRepository.Add(user);
+            _userRepository.Save();
         }
 
        public List<User> GetAll()
