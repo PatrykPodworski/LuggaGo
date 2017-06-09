@@ -1,22 +1,44 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using LuggaGo.BindingModels;
 using LuggaGo.BusinessLayer;
 using LuggaGo.DataLayer.Models;
+using LuggaGo.DataLayer.Repositories;
 using LuggaGo.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace LuggaGo.Controllers
 {
     public class UserController : ApiController
     {
-        private readonly ApplicationUserManager _userManager;
-        private readonly UserServices _userServices;
+        private ApplicationUserManager _userManager;
+        private UserServices _userServices;
 
-        public UserController(ApplicationUserManager userManager, UserServices userServices)
+        public ApplicationUserManager UserManager
         {
-            _userManager = userManager;
-            _userServices = userServices;
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        public UserServices UserServices
+        {
+            get
+            {
+                return _userServices ?? new UserServices(new UserRepository());
+
+            }
+            private set { _userServices = value; }
         }
 
         [AllowAnonymous]
@@ -30,18 +52,24 @@ namespace LuggaGo.Controllers
 
             var appUser = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await _userManager.CreateAsync(appUser, model.Password);
+            IdentityResult result = await UserManager.CreateAsync(appUser, model.Password);
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
 
-            _userServices.AddUser(model.FirstName, model.LastName, appUser.Id);
+            UserServices.AddUser(model.FirstName, model.LastName, appUser.Id);
 
 
             return Ok();
         }
+
+        public List<User> GetUsers()
+        {
+            return UserServices.GetAll().ToList();
+        }
+
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
             if (result == null)

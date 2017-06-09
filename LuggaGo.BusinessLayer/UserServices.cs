@@ -1,4 +1,6 @@
-﻿using LuggaGo.DataLayer.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LuggaGo.DataLayer.Models;
 using LuggaGo.DataLayer.Repositories;
 
 namespace LuggaGo.BusinessLayer
@@ -17,5 +19,10 @@ namespace LuggaGo.BusinessLayer
             var user = new User(firstName, lastName, accountId);
             _userRepository.Add(user);
         }
-    }
+
+       public List<User> GetAll()
+       {
+           return _userRepository.GetAll().ToList();
+       }
+   }
 }
