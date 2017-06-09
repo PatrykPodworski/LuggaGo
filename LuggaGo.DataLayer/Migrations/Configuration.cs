@@ -5,14 +5,14 @@ namespace LuggaGo.DataLayer.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LuggaGo.Models.LuggagoDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LuggaGo.DataLayer.Models.LuggagoDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(LuggaGo.Models.LuggagoDbContext context)
+        protected override void Seed(LuggaGo.DataLayer.Models.LuggagoDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
