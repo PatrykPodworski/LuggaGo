@@ -1,5 +1,4 @@
 ﻿using LuggaGo.DataLayer.Models.Interfaces;
-using LuggaGo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
