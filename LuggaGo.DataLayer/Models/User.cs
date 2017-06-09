@@ -8,8 +8,7 @@ namespace LuggaGo.Models
     public class User
     {
         public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public List<Address> Addresses { get; set; }
         public List<Order> Orders { get; set; }
 
@@ -21,8 +20,7 @@ namespace LuggaGo.Models
 
         public User(string firstName, string lastName) : this()
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Name = firstName + " " + lastName;
         }
     }
 }
