@@ -22,5 +22,7 @@ namespace LuggaGo.DataLayer.Models.Repositories
             var query = GetAll().FirstOrDefault(x => x.ID == ID);
             return query;
         }
+
+
     }
 }

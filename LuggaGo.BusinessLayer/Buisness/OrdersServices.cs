@@ -4,22 +4,24 @@ using System.Linq;
 using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
-using LuggaGo.DataLayer.Models.Interfaces;
+using LuggaGo.DataLayer.Interfaces;
+using LuggaGo.DataLayer.Models;
+
 using LuggaGo.DataLayer.Models.Repositories;
-using LuggaGo.Models;
+
 
 namespace LuggaGo.BusinessLayer.Buisness
 {
     public class OrdersServices
     {
-        private static IOrdersRepository _ordersRepository;
+        private IOrdersRepository _ordersRepository;
 
         public OrdersServices(IOrdersRepository ordersRepository)
         {
-            _ordersRepository = ordersRepository;
+          _ordersRepository = ordersRepository;
         }
 
-        public static  async Task<decimal?> GetOrderPrice(Order ord)
+        public   async Task<decimal?> GetOrderPrice(Order ord)
         {
             bool res = await IsOrderCorrect(ord);
             if (!res)
@@ -29,19 +31,26 @@ namespace LuggaGo.BusinessLayer.Buisness
             return GetPrice();
         }
 
-        public static Task<bool> PlaceOrder(Order order)
+        public  Task<bool> PlaceOrder(Order order)
         {
             try
             {
                 _ordersRepository.Add(order);
+                _ordersRepository.Save();
                 return Task.FromResult(true);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 return Task.FromResult(false);
             }
         }
-        private static Task<bool> IsOrderCorrect(Order order)
+
+        public List<Order> GetAllOrders()
+        {
+            return _ordersRepository.GetAll().ToList();
+        }
+
+        private Task<bool> IsOrderCorrect(Order order)
         {
             if (order.FlightNumber == null) return Task.FromResult(false);
             if (order.LuggageDimensions == null) return Task.FromResult(false);
@@ -54,14 +63,14 @@ namespace LuggaGo.BusinessLayer.Buisness
             return Task.FromResult(true);
         }
 
-        private static bool IsPathCorrect(Path path)
+        private  bool IsPathCorrect(Path path)
         {
             if (path.FromAddress == path.ToAddress) return false;
             if (path.FromAddress == null || path.ToAddress == null) return false;
             return true;
         }
 
-        private static decimal GetPrice()
+        private  decimal GetPrice()
         {
             
                 Random rand = new Random();
