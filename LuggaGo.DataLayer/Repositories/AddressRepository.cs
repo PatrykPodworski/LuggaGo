@@ -1,11 +1,9 @@
-﻿using LuggaGo.DataLayer.Models.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using LuggaGo.DataLayer.Models;
+using LuggaGo.DataLayer.Models.Repositories;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LuggaGo.DataLayer.Interfaces;
 
-namespace LuggaGo.DataLayer.Models.Repositories
+namespace LuggaGo.DataLayer.Repositories
 {
     public class AddressRepository : GenericRepository<LuggagoDbContext,
         Address>, IAddressRepository
@@ -17,7 +15,7 @@ namespace LuggaGo.DataLayer.Models.Repositories
             return query;
         }
 
-        public Address FindByID(int addressID)
+        public Address FindById(int addressID)
         {
             var query = GetAll().FirstOrDefault(x => x.ID == addressID);
             return query;

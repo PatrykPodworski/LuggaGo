@@ -1,11 +1,11 @@
-﻿using LuggaGo.DataLayer.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using LuggaGo.DataLayer.Interfaces;
 
 namespace LuggaGo.DataLayer.Models.Repositories
 {

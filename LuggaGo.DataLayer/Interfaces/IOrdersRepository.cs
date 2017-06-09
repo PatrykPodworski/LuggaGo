@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LuggaGo.DataLayer.Models;
 
-namespace LuggaGo.DataLayer.Models.Interfaces
+namespace LuggaGo.DataLayer.Interfaces
 {
     public interface IOrdersRepository : IGenericRepository<Order>
     {
-        Order FindByID(int ID);
+        Order FindById(int id);
         Order FindByFlightNumber(string flightNumber);
     }
 }

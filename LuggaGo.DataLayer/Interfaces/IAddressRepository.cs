@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LuggaGo.DataLayer.Models;
 
-namespace LuggaGo.DataLayer.Models.Interfaces
+namespace LuggaGo.DataLayer.Interfaces
 {
-    interface IAddressRepository : IGenericRepository<Address>
+    public interface IAddressRepository : IGenericRepository<Address>
     {
-        Address FindByID(int addressID);
+        Address FindById(int addressId);
         Address FindByName(string name);
         Address FindByCity(string city);
         Address FindByStreet(string street);

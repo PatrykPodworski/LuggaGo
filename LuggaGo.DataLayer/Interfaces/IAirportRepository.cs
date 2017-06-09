@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LuggaGo.DataLayer.Models;
 
-namespace LuggaGo.DataLayer.Models.Interfaces
+namespace LuggaGo.DataLayer.Interfaces
 {
     public interface IAirportRepository : IGenericRepository<Airport>
     {
-        Airport FindByID(int airportID);
+        Airport FindById(int airportId);
         Airport FindByName(string name);
         Airport FindByShort(string shortName);
     }

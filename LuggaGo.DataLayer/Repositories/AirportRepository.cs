@@ -1,16 +1,16 @@
-﻿using LuggaGo.DataLayer.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LuggaGo.DataLayer.Interfaces;
 
 namespace LuggaGo.DataLayer.Models.Repositories
 {
     public class AirportRepository : GenericRepository<LuggagoDbContext,
         Airport>, IAirportRepository
     {
-        public Airport FindByID(int airportID)
+        public Airport FindById(int airportID)
         {
             var query = GetAll().FirstOrDefault(x => x.ID == airportID);
             return query;

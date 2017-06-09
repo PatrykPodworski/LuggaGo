@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LuggaGo.DataLayer.Models;
 
-namespace LuggaGo.DataLayer.Models.Interfaces
+namespace LuggaGo.DataLayer.Interfaces
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        User FindByID(int ID);
+        User FindById(int id);
         User FindByName(string name);
     }
 }
