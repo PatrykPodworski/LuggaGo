@@ -59,5 +59,18 @@ namespace LuggaGo.BusinessLayer
 
             return addresses;
         }
+
+        public bool Delete(int id, string accountId)
+        {
+            var userAddress = _userRepository.GetUserAddressById(id, accountId);
+
+            if (userAddress == null)
+                return false;
+
+            _addressRepository.Delete(userAddress);
+            _addressRepository.Save();
+
+            return true;
+        }
     }
 }

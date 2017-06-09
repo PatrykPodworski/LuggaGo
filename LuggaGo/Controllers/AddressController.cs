@@ -69,5 +69,16 @@ namespace LuggaGo.Controllers
                 return BadRequest();
             return Ok();
         }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var accountId = User.Identity.GetUserId();
+            var success = AddressServices.Delete(id, accountId);
+
+            if (!success)
+                return BadRequest();
+            return Ok();
+        }
     }
 }
