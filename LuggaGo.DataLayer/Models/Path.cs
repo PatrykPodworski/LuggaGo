@@ -4,6 +4,7 @@
     {
         public Address FromAddress { get; set; }
         public Address ToAddress { get; set; }
+        public int ID { get; set; }
 
         public Path()
         {
