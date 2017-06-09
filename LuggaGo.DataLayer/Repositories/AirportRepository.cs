@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace LuggaGo.DataLayer.Models.Repositories
         public Airport FindByShort(string shortName)
         {
             var query = GetAll().FirstOrDefault(x => x.ShortName == shortName);
+            return query;
+        }
+
+        public override IQueryable<Airport> GetAll()
+        {
+            var query = Context.Airports.Include(x=>x.Address);
             return query;
         }
     }
