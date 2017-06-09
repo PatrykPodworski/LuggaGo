@@ -46,5 +46,13 @@ namespace LuggaGo.DataLayer.Repositories
 
             return result;
         }
+
+        public List<Order> GetUserOrders(string accountId)
+        {
+            var query = GetAll()
+                .Include(x => x.Orders)
+                .FirstOrDefault(x => x.AccountId == accountId);
+            return query?.Orders;
+        }
     }
 }

@@ -10,11 +10,13 @@ using LuggaGo.BusinessLayer.Buisness;
 using LuggaGo.DataLayer.Interfaces;
 using LuggaGo.DataLayer.Models;
 using LuggaGo.DataLayer.Models.Repositories;
+using LuggaGo.DataLayer.Repositories;
+using Microsoft.AspNet.Identity;
 
 
 namespace LuggaGo.Controllers
 {   
-    
+    [Authorize]
     [RoutePrefix("api/OrdersServices")]
     public class OrderController:ApiController
     {
@@ -25,7 +27,9 @@ namespace LuggaGo.Controllers
         {
             get
             {
-                return _ordersServices ?? new OrdersServices(new OrdersRepository());
+                return _ordersServices ?? new OrdersServices(
+                    new OrdersRepository()
+                    ,new UserRepository());
 
             }
             private set { _ordersServices = value; }
@@ -36,7 +40,8 @@ namespace LuggaGo.Controllers
         public async Task<decimal?> GetOrderPrice(Order order)
         {
 
-             return await OrdersServices.GetOrderPrice(order);
+            var accountId = User.Identity.GetUserId();
+            return await OrdersServices.GetOrderPrice(order,accountId);
 
         }
 
@@ -44,7 +49,8 @@ namespace LuggaGo.Controllers
         [Route("PlaceOrder")]
         public async Task<IHttpActionResult> PlaceOrder(Order order)
         {
-            if (await OrdersServices.PlaceOrder(order))
+            var accountId = User.Identity.GetUserId();
+            if (await OrdersServices.PlaceOrder(order,accountId))
             {
                 return Ok();
             }
@@ -59,7 +65,8 @@ namespace LuggaGo.Controllers
 
         public List<Order> GetAllOrders()
         {
-            return OrdersServices.GetAllOrders();
+            var accountId = User.Identity.GetUserId();
+            return OrdersServices.GetAllOrders(accountId);
         }
 
         

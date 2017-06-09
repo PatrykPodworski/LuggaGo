@@ -15,28 +15,36 @@ namespace LuggaGo.BusinessLayer.Buisness
     public class OrdersServices
     {
         private IOrdersRepository _ordersRepository;
+        private readonly IUserRepository _userRepository;
 
-        public OrdersServices(IOrdersRepository ordersRepository)
+        public OrdersServices(IOrdersRepository ordersRepository, IUserRepository userRepository)
         {
           _ordersRepository = ordersRepository;
+            _userRepository = userRepository;
         }
 
-        public   async Task<decimal?> GetOrderPrice(Order ord)
+        public   async Task<decimal?> GetOrderPrice(Order ord,string accountId)
         {
+            var user = _userRepository.FindByAccountId(accountId);
             bool res = await IsOrderCorrect(ord);
-            if (!res)
+            if (!res||user==null)
             {
                 return null;
             }
             return GetPrice();
         }
 
-        public  Task<bool> PlaceOrder(Order order)
+        public  Task<bool> PlaceOrder(Order order, string accountId)
         {
+            var user = _userRepository.FindByAccountId(accountId);
+
+            if (user == null)
+                return Task.FromResult(false);
             try
             {
-                _ordersRepository.Add(order);
-                _ordersRepository.Save();
+
+                user.Orders.Add(order);
+                _userRepository.Save();
                 return Task.FromResult(true);
             }
             catch (NullReferenceException)
@@ -45,9 +53,10 @@ namespace LuggaGo.BusinessLayer.Buisness
             }
         }
 
-        public List<Order> GetAllOrders()
+        public List<Order> GetAllOrders(string accountId)
         {
-            return _ordersRepository.GetAll().ToList();
+            
+            return _userRepository.GetUserOrders(accountId);
         }
 
         private Task<bool> IsOrderCorrect(Order order)

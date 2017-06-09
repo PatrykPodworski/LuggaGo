@@ -10,5 +10,6 @@ namespace LuggaGo.DataLayer.Interfaces
         User FindByAccountId(string accountId);
         List<Address> GetAddresses(string accountId);
         Address GetUserAddressById(int id, string accountId);
+        List<Order> GetUserOrders(string accountId);
     }
 }
