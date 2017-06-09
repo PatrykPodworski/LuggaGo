@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LuggaGo.DataLayer.Models;
-using LuggaGo.DataLayer.Repositories;
+using LuggaGo.DataLayer.Interfaces;
 
 namespace LuggaGo.BusinessLayer
 {
-   public class UserServices
+    public class UserServices
    {
-       private readonly UserRepository _userRepository;
+       private readonly IUserRepository _userRepository;
 
-       public UserServices(UserRepository userRepository)
+       public UserServices(IUserRepository userRepository)
        {
            _userRepository = userRepository;
        }
