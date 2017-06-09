@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo", "LuggaGo\LuggaGo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo.Tests", "LuggaGo.Tests\LuggaGo.Tests.csproj", "{B09BC45B-1B73-4472-A5E2-97EFBB62735F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo.BusinessLayer", "LuggaGo.BusinessLayer\LuggaGo.BusinessLayer.csproj", "{E5F578EB-0B02-4409-8045-44AE16D59B65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuggaGo.DataLayer", "LuggaGo.DataLayer\LuggaGo.DataLayer.csproj", "{D586F5ED-7B61-4665-8A7A-446578788E8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B09BC45B-1B73-4472-A5E2-97EFBB62735F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F578EB-0B02-4409-8045-44AE16D59B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F578EB-0B02-4409-8045-44AE16D59B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F578EB-0B02-4409-8045-44AE16D59B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F578EB-0B02-4409-8045-44AE16D59B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D586F5ED-7B61-4665-8A7A-446578788E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D586F5ED-7B61-4665-8A7A-446578788E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D586F5ED-7B61-4665-8A7A-446578788E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D586F5ED-7B61-4665-8A7A-446578788E8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
