@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace LuggaGo.Models
+﻿namespace LuggaGo.DataLayer.Models
 {
     public class Path
     {
+        public int ID { get; set; }
         public Address FromAddress { get; set; }
         public Address ToAddress { get; set; }
 
