@@ -100,6 +100,15 @@ namespace LuggaGo.Controllers
 
             return null;
         }
+        [HttpPut]
+        public IHttpActionResult Edit(User model)
+        {
+            var accountId = User.Identity.GetUserId();
+            var success = UserServices.Edit(model, accountId);
 
+            if (!success)
+                return BadRequest();
+            return Ok();
+        }
     }
 }

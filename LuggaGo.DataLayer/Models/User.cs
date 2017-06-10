@@ -9,11 +9,13 @@ namespace LuggaGo.DataLayer.Models
         public string AccountId { get; set; }
         public List<Address> Addresses { get; set; }
         public List<Order> Orders { get; set; }
+        public List<CreditCard> CreditCards { get; set; }
 
         public User()
         {
             Addresses = new List<Address>();
             Orders = new List<Order>();
+            CreditCards = new List<CreditCard>();
         }
 
         public User(string firstName, string lastName, string accountId) : this()

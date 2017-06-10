@@ -15,15 +15,33 @@ namespace LuggaGo.BusinessLayer
        }
 
        public void AddUser(string firstName, string lastName, string accountId)
-        {
+       {
             var user = new User(firstName, lastName, accountId);
             _userRepository.Add(user);
             _userRepository.Save();
-        }
+       }
 
        public List<User> GetAll()
        {
            return _userRepository.GetAll().ToList();
+       }
+
+       public bool Edit(User model, string accountId)
+       {
+            var user = _userRepository.FindByAccountId(accountId);
+
+            if (user == null)
+                return false;
+
+            user.Addresses = model.Addresses;
+            user.CreditCards = model.CreditCards;
+            user.Name = model.Name;
+            user.Orders = model.Orders;
+
+            _userRepository.Edit(user);
+            _userRepository.Save();
+
+            return true;
        }
    }
 }
