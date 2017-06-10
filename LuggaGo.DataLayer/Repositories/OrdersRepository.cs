@@ -23,14 +23,5 @@ namespace LuggaGo.DataLayer.Models.Repositories
             var query = GetAll().FirstOrDefault(x => x.ID == ID);
             return query;
         }
-
-        public override IQueryable<Order> GetAll()
-        {
-            var query = Context.Orders.Include(x => x.Paths.Select(y=>y.ToAddress)).
-                Include(x => x.Paths.Select(y => y.FromAddress));
-            return query;
-        }
-
-
     }
 }

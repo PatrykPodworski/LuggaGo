@@ -69,6 +69,8 @@ namespace LuggaGo.DataLayer.Repositories
         {
             var query = GetAll()
                 .Include(x => x.Orders)
+                .Include(x => x.Orders.Select(y => y.Paths.Select(z => z.FromAddress)))
+                .Include(x => x.Orders.Select(y => y.Paths.Select(z => z.ToAddress)))
                 .FirstOrDefault(x => x.AccountId == accountId);
             return query?.Orders;
         }
